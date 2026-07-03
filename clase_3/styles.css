@@ -1,0 +1,738 @@
+/* ==========================================
+   VARIABLES & DESIGN SYSTEM (HSL Colors)
+   ========================================== */
+:root {
+  --font-sans: 'Outfit', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  /* Colors */
+  --bg-dark: hsl(222, 47%, 7%);
+  --bg-card: hsla(223, 40%, 12%, 0.7);
+  --bg-card-hover: hsla(223, 40%, 16%, 0.85);
+  --border-color: hsla(223, 30%, 20%, 0.5);
+  --border-focus: hsl(210, 100%, 66%);
+  
+  --text-main: hsl(210, 40%, 98%);
+  --text-muted: hsl(215, 20%, 65%);
+  --text-dark: hsl(222, 47%, 7%);
+
+  /* Git / Status States */
+  --color-clean: hsl(142, 70%, 45%);
+  --color-modified: hsl(38, 92%, 50%);
+  --color-staged: hsl(160, 84%, 39%);
+  --color-commit: hsl(263, 70%, 50%);
+  --color-push: hsl(190, 90%, 50%);
+  
+  /* Glowing / Decorative Colors */
+  --glow-primary: hsla(210, 100%, 66%, 0.15);
+  --glow-warning: hsla(38, 92%, 50%, 0.15);
+  --glow-success: hsla(142, 70%, 45%, 0.15);
+  --glow-accent: hsla(263, 70%, 50%, 0.15);
+
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  
+  --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ==========================================
+   BASE & RESET
+   ========================================== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg-dark);
+  color: var(--text-main);
+  line-height: 1.5;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+  padding-bottom: 40px;
+}
+
+/* Ambient Background Glow */
+.glow-bg {
+  position: absolute;
+  top: -200px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 800px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, rgba(168, 85, 247, 0.05) 50%, transparent 100%);
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: -1;
+}
+
+.container {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ==========================================
+   HEADER
+   ========================================== */
+header {
+  padding: 40px 0 20px;
+  text-align: center;
+  border-bottom: 1px solid var(--border-color);
+  background: linear-gradient(180deg, rgba(7, 10, 19, 0.6) 0%, transparent 100%);
+  backdrop-filter: blur(10px);
+}
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.git-icon {
+  color: var(--color-modified);
+  filter: drop-shadow(0 0 8px rgba(245, 158, 11, 0.5));
+}
+
+header h1 {
+  font-size: 2.2rem;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
+
+header h1 span {
+  background: linear-gradient(90deg, #f59e0b, #ec4899, #3b82f6);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.subtitle {
+  color: var(--text-muted);
+  font-size: 1.1rem;
+  font-weight: 300;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* ==========================================
+   COMMON COMPONENTS: CARDS & BADGES
+   ========================================== */
+.card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 24px;
+  backdrop-filter: blur(16px);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  transition: var(--transition-smooth);
+}
+
+.badge {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.badge-local {
+  background-color: hsla(210, 100%, 66%, 0.15);
+  color: hsl(210, 100%, 75%);
+  border: 1px solid hsla(210, 100%, 66%, 0.3);
+}
+
+.badge-index {
+  background-color: hsla(160, 84%, 39%, 0.15);
+  color: hsl(160, 84%, 49%);
+  border: 1px solid hsla(160, 84%, 39%, 0.3);
+}
+
+.badge-repo {
+  background-color: hsla(263, 70%, 50%, 0.15);
+  color: hsl(263, 70%, 70%);
+  border: 1px solid hsla(263, 70%, 50%, 0.3);
+}
+
+.badge-remote {
+  background-color: hsla(190, 90%, 50%, 0.15);
+  color: hsl(190, 90%, 70%);
+  border: 1px solid hsla(190, 90%, 50%, 0.3);
+}
+
+/* ==========================================
+   SECTION 1: CONTROL / COMMAND PANEL
+   ========================================== */
+.command-panel {
+  margin: 30px 0;
+  border-left: 4px solid var(--border-focus);
+}
+
+.command-panel h2 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.step-num {
+  background-color: var(--border-focus);
+  color: var(--text-dark);
+  font-size: 0.9rem;
+  font-weight: 800;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.controls-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.control-group {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 16px;
+  border-radius: var(--radius-sm);
+}
+
+.control-label {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+
+.btn-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Buttons Styling */
+.btn {
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 10px 16px;
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: var(--transition-smooth);
+  width: 100%;
+}
+
+.btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+  filter: grayscale(1);
+}
+
+.btn-warning {
+  background-color: var(--color-modified);
+  color: var(--text-dark);
+  box-shadow: 0 0 12px var(--glow-warning);
+}
+.btn-warning:hover:not(:disabled) {
+  background-color: hsl(38, 92%, 60%);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px var(--glow-warning);
+}
+
+.btn-secondary {
+  background-color: var(--border-color);
+  color: var(--text-main);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+.btn-secondary:hover:not(:disabled) {
+  background-color: hsla(223, 30%, 30%, 0.8);
+  transform: translateY(-2px);
+}
+
+.btn-primary {
+  background-color: var(--color-staged);
+  color: var(--text-main);
+  box-shadow: 0 0 12px var(--glow-success);
+}
+.btn-primary:hover:not(:disabled) {
+  background-color: hsl(160, 84%, 49%);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px var(--glow-success);
+}
+
+.btn-success {
+  background-color: var(--color-commit);
+  color: var(--text-main);
+  box-shadow: 0 0 12px var(--glow-accent);
+}
+.btn-success:hover:not(:disabled) {
+  background-color: hsl(263, 70%, 60%);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px var(--glow-accent);
+}
+
+.btn-accent {
+  background-color: var(--color-push);
+  color: var(--text-dark);
+  box-shadow: 0 0 12px rgba(6, 182, 212, 0.15);
+}
+.btn-accent:hover:not(:disabled) {
+  background-color: hsl(190, 90%, 60%);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(6, 182, 212, 0.3);
+}
+
+/* Commit Input */
+.commit-input-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+
+.commit-input-wrapper input {
+  background-color: rgba(0, 0, 0, 0.3);
+  border: 1px solid var(--border-color);
+  color: var(--text-main);
+  padding: 8px 12px;
+  font-size: 0.85rem;
+  border-radius: var(--radius-sm);
+  outline: none;
+  transition: var(--transition-smooth);
+}
+
+.commit-input-wrapper input:focus {
+  border-color: var(--color-commit);
+  box-shadow: 0 0 8px var(--glow-accent);
+}
+
+.commit-input-wrapper input:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ==========================================
+   SECTION 2: GIT BOARD LAYOUT
+   ========================================== */
+.board-section {
+  margin-bottom: 40px;
+}
+
+.board-title {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.git-board {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+@media (max-width: 1100px) {
+  .git-board {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 650px) {
+  .git-board {
+    grid-template-columns: 1fr;
+  }
+}
+
+.board-column {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  display: flex;
+  flex-direction: column;
+  min-height: 380px;
+  transition: var(--transition-smooth);
+  backdrop-filter: blur(16px);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+}
+
+.board-column:hover {
+  border-color: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.3);
+}
+
+.column-header {
+  padding: 20px 20px 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.column-header h3 {
+  font-size: 1.15rem;
+  font-weight: 600;
+}
+
+.column-desc {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  padding: 10px 20px;
+  background-color: rgba(0, 0, 0, 0.1);
+  min-height: 60px;
+}
+
+.column-content {
+  padding: 20px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* Empty Area State */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  border: 1px dashed var(--border-color);
+  padding: 30px 15px;
+  border-radius: var(--radius-sm);
+  margin: auto 0;
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.empty-state code {
+  background-color: rgba(255, 255, 255, 0.07);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: var(--font-mono);
+  color: hsl(210, 100%, 75%);
+}
+
+/* ==========================================
+   CARDS: FILE CARDS & COMMIT CARDS
+   ========================================== */
+.file-card {
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: var(--radius-sm);
+  padding: 16px;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  position: relative;
+  overflow: hidden;
+}
+
+.file-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+}
+
+.file-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.file-status {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+}
+
+.file-preview {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  background-color: rgba(0, 0, 0, 0.25);
+  padding: 6px 10px;
+  border-radius: 4px;
+  color: var(--text-muted);
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+/* File Card States */
+.file-card.clean {
+  border: 1px solid rgba(16, 185, 129, 0.15);
+}
+.file-card.clean::before {
+  background-color: var(--color-clean);
+}
+.file-card.clean .file-status {
+  color: var(--color-clean);
+}
+
+.file-card.modified {
+  border: 1px solid rgba(245, 158, 11, 0.25);
+  animation: shake 0.3s ease;
+  box-shadow: 0 0 15px rgba(245, 158, 11, 0.1);
+}
+.file-card.modified::before {
+  background-color: var(--color-modified);
+}
+.file-card.modified .file-status {
+  color: var(--color-modified);
+}
+
+.file-card.staged {
+  border: 1px solid rgba(16, 185, 129, 0.35);
+  box-shadow: 0 0 15px rgba(16, 185, 129, 0.15);
+}
+.file-card.staged::before {
+  background-color: var(--color-staged);
+}
+.file-card.staged .file-status {
+  color: var(--color-staged);
+}
+
+/* Commit Card */
+.commit-card {
+  background: linear-gradient(135deg, hsla(263, 70%, 50%, 0.15) 0%, hsla(263, 70%, 30%, 0.05) 100%);
+  border: 1px solid rgba(139, 92, 246, 0.3);
+  border-radius: var(--radius-sm);
+  padding: 14px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  animation: popIn 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  position: relative;
+}
+
+.commit-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background-color: var(--color-commit);
+}
+
+.commit-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.commit-hash {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: hsl(263, 70%, 75%);
+  background-color: rgba(139, 92, 246, 0.25);
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.commit-branch {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+}
+
+.commit-message {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-main);
+  line-height: 1.3;
+}
+
+.commit-files {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  padding-top: 6px;
+}
+
+/* GitHub Commit Card specific stylings */
+.remote-commit {
+  background: linear-gradient(135deg, hsla(190, 90%, 50%, 0.15) 0%, hsla(190, 90%, 30%, 0.05) 100%);
+  border-color: rgba(6, 182, 212, 0.3);
+}
+
+.remote-commit::before {
+  background-color: var(--color-push);
+}
+
+.remote-commit .commit-hash {
+  color: hsl(190, 90%, 75%);
+  background-color: rgba(6, 182, 212, 0.25);
+}
+
+/* ==========================================
+   TERMINAL COMPONENT
+   ========================================== */
+.terminal-section {
+  border-color: rgba(255, 255, 255, 0.1);
+  padding: 0;
+  overflow: hidden;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+}
+
+.terminal-header {
+  background-color: rgba(0, 0, 0, 0.4);
+  padding: 12px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.terminal-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.term-btn {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.term-btn.close { background-color: #ef4444; }
+.term-btn.minimize { background-color: #f59e0b; }
+.term-btn.expand { background-color: #10b981; }
+
+.terminal-title {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.clear-terminal-btn {
+  font-family: var(--font-sans);
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  padding: 2px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+.clear-terminal-btn:hover {
+  border-color: var(--text-main);
+  color: var(--text-main);
+}
+
+.terminal-body {
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 20px;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  min-height: 180px;
+  max-height: 250px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  color: hsl(100, 80%, 75%);
+}
+
+.term-line {
+  line-height: 1.5;
+}
+
+.term-line.cmd {
+  color: hsl(210, 100%, 75%);
+}
+
+.term-line.output {
+  color: var(--text-main);
+  white-space: pre-line;
+}
+
+.term-line.prompt {
+  color: var(--text-muted);
+}
+
+.term-line .cursor {
+  animation: blink 1s step-end infinite;
+  font-weight: bold;
+  color: var(--text-main);
+}
+
+/* ==========================================
+   FOOTER
+   ========================================== */
+.footer {
+  text-align: center;
+  padding: 40px 0 20px;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+/* ==========================================
+   ANIMATIONS & MOTION REDUCED
+   ========================================== */
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-4px); }
+  40%, 80% { transform: translateX(4px); }
+}
+
+@keyframes popIn {
+  0% {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes blink {
+  from, to { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body *, .file-card, .commit-card, .btn {
+    animation: none !important;
+    transition: none !important;
+  }
+}

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simulador Interactivo de Git & GitHub</title>
+  <!-- Google Fonts: Outfit & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <!-- CSS Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="glow-bg"></div>
+  
+  <header>
+    <div class="container">
+      <div class="logo">
+        <svg class="git-icon" viewBox="0 0 24 24" width="28" height="28">
+          <path fill="currentColor" d="M20.354 11.235L12.765 3.647a1.455 1.455 0 0 0-2.06 0L8.622 5.73l2.84 2.84a2.71 2.71 0 0 1 3.513 3.514l2.839 2.839a2.709 2.709 0 0 1-.03 3.791l-.01.01a2.716 2.716 0 0 1-3.792-.03l-2.84-2.839a2.712 2.712 0 0 1-3.483-3.484L5.82 9.53a2.71 2.71 0 0 1-3.791-.03c-1.047-1.047-1.047-2.742 0-3.792l.01-.01c1.047-1.047 2.742-1.047 3.792 0l2.062 2.062L10.706 5.7c.57-.57 1.493-.57 2.061 0l7.587 7.588a1.458 1.458 0 0 1 0 2.06l-2.061 2.062a1.456 1.456 0 0 1-2.06 0l-7.588-7.587"/>
+        </svg>
+        <h1>Git & GitHub <span>Interactive Sandbox</span></h1>
+      </div>
+      <p class="subtitle">Una guía visual e interactiva para entender cómo viajan tus archivos y commits.</p>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Panel de Comandos Git -->
+    <section class="command-panel card">
+      <h2><span class="step-num">1</span> Ejecuta comandos de Git</h2>
+      <div class="controls-grid">
+        <div class="control-group">
+          <span class="control-label">Paso 1: Modifica o revierte archivos locales</span>
+          <div class="btn-group">
+            <button id="btn-modify" class="btn btn-warning">
+              <span class="icon">📝</span> Modificar index.html
+            </button>
+            <button id="btn-checkout" class="btn btn-secondary" disabled>
+              <span class="icon">↩️</span> git checkout -- index.html
+            </button>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <span class="control-label">Paso 2: Prepara tus cambios</span>
+          <button id="btn-add" class="btn btn-primary" disabled>
+            <span class="icon">➕</span> git add index.html
+          </button>
+        </div>
+
+        <div class="control-group">
+          <span class="control-label">Paso 3: Guarda en tu repositorio local</span>
+          <div class="commit-input-wrapper">
+            <input type="text" id="commit-message" placeholder="Mensaje del commit (ej: Mi primer commit)" disabled>
+            <button id="btn-commit" class="btn btn-success" disabled>
+              <span class="icon">💾</span> git commit -m "..."
+            </button>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <span class="control-label">Paso 4: Envía a la nube (GitHub)</span>
+          <button id="btn-push" class="btn btn-accent" disabled>
+            <span class="icon">🚀</span> git push origin main
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Visualizador de Áreas (Las 4 Columnas) -->
+    <section class="board-section">
+      <h2 class="board-title"><span class="step-num">2</span> Visualiza los cambios en tiempo real</h2>
+      
+      <div class="git-board">
+        <!-- 1. WORKING DIRECTORY -->
+        <div class="board-column" id="col-working">
+          <div class="column-header">
+            <h3>Working Directory</h3>
+            <span class="badge badge-local">Local</span>
+          </div>
+          <div class="column-desc">Tu carpeta de trabajo en la PC. Aquí creas y editas archivos.</div>
+          <div class="column-content" id="working-dir-files">
+            <!-- Archivo index.html inicial -->
+            <div class="file-card clean" id="file-index">
+              <div class="file-header">
+                <span class="file-icon">📄</span>
+                <span class="file-name">index.html</span>
+              </div>
+              <div class="file-status">Sin cambios (Clean)</div>
+              <div class="file-preview">&lt;html&gt; ... &lt;/html&gt;</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. STAGING AREA -->
+        <div class="board-column" id="col-staging">
+          <div class="column-header">
+            <h3>Staging Area</h3>
+            <span class="badge badge-index">Index</span>
+          </div>
+          <div class="column-desc">El borrador antes de guardar. Preparas qué archivos irán en el commit.</div>
+          <div class="column-content" id="staging-area-files">
+            <div class="empty-state">Área vacía. Ejecuta <code>git add</code> para preparar cambios.</div>
+          </div>
+        </div>
+
+        <!-- 3. LOCAL REPOSITORY -->
+        <div class="board-column" id="col-local-repo">
+          <div class="column-header">
+            <h3>Local Repository</h3>
+            <span class="badge badge-repo">Repo Local (.git)</span>
+          </div>
+          <div class="column-desc">La base de datos en tu PC. Guarda el historial de versiones (commits).</div>
+          <div class="column-content" id="local-repo-commits">
+            <div class="empty-state">Sin commits aún. Ejecuta <code>git commit</code> para guardar.</div>
+          </div>
+        </div>
+
+        <!-- 4. REMOTE REPOSITORY (GITHUB) -->
+        <div class="board-column" id="col-remote-repo">
+          <div class="column-header">
+            <h3>GitHub (Remote)</h3>
+            <span class="badge badge-remote">Nube / Remoto</span>
+          </div>
+          <div class="column-desc">Servidor en la nube para compartir tu código y colaborar con otros.</div>
+          <div class="column-content" id="remote-repo-commits">
+            <div class="empty-state">No se han subido commits. Ejecuta <code>git push</code>.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Terminal Simulado -->
+    <section class="terminal-section card">
+      <div class="terminal-header">
+        <div class="terminal-buttons">
+          <span class="term-btn close"></span>
+          <span class="term-btn minimize"></span>
+          <span class="term-btn expand"></span>
+        </div>
+        <div class="terminal-title">git-terminal - bash</div>
+        <button id="btn-clear-term" class="clear-terminal-btn">Limpiar</button>
+      </div>
+      <div class="terminal-body" id="terminal-content">
+        <div class="term-line output">Bienvenido al simulador interactivo de Git. Modifica un archivo arriba para comenzar.</div>
+        <div class="term-line prompt">guest@antigravity:~/proyecto$ <span class="cursor">_</span></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>Desarrollado para clases de Programación - Explicación de Git y GitHub.</p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

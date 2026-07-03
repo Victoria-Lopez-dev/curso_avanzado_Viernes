@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./reset.css">
+    <link rel="stylesheet" href="./style.css"/>
+    <title>Clase 1 - Fundamentos de HTML</title>
+</head>
+<body>
+    <header class="site-header">
+        <div class="brand">
+            <h1>Fundamentos de HTML</h1>
+        </div>
+        <nav class="main-nav">
+            <ul>
+                <li><a href="#introduccion">Introducción</a></li>
+                <li><a href="#landmarks">Landmarks</a></li>
+                <li><a href="#semanticas">Semánticas</a></li>
+                <li><a href="#funcionales">Funcionales</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="contenido-principal">
+        <section id="introduccion" class="bloque">
+            <h2>Etiquetas de maquetación</h2>
+            <p>
+                En HTML se usan etiquetas estructurales como 
+                <span class="code">header</span>, 
+                <span class="code">main</span>, 
+                <span class="code">section</span> 
+                y
+                <span class="code">footer</span> 
+                para organizar el contenido.Los elementos de maquetación genéricos como <span class="code">div</span> y <span class="code">span</span> también son útiles, pero no aportan significado semántico.
+              
+            </p>
+            <button>click!</button>
+            <p>
+                En HTML se usan etiquetas estructurales como <span class="code">header</span>, <span class="code">main</span>, <span class="code">section</span> y <span class="code">footer</span> para organizar el contenido. Los elementos de maquetación genéricos como <span class="code">div</span> y <span class="code">span</span> también son útiles, pero no aportan significado semántico.
+            </p>
+        </section>
+
+        <section id="landmarks" class="bloque">
+            <h2>Landmarks particulares</h2>
+            <article class="card">
+                <h3><span class="code">article</span></h3>
+                <p><span class="code">article</span> define contenido independiente, como un post, una noticia o una tarjeta de información.</p>
+            </article>
+            <aside class="aside-info">
+                <h3><span class="code">aside</span></h3>
+                <p><span class="code">aside</span> contiene información relacionada o complementaria, como notas, definiciones o enlaces secundarios.</p>
+            </aside>
+        </section>
+
+        <section id="semanticas" class="bloque">
+            <h2>Etiquetas semánticas</h2>
+            <div class="example-grid">
+                <article>
+                    <h3><span class="code">section</span></h3>
+                    <p>Agrupa contenido temático dentro de una página.</p>
+                </article>
+                <article>
+                    <h3><span class="code">header</span></h3>
+                    <p>Encabezado de página o de una sección con títulos y navegación.</p>
+                </article>
+                <article>
+                    <h3><span class="code">footer</span></h3>
+                    <p>Pie de página con créditos, enlaces y datos de contacto.</p>
+                </article>
+                <article>
+                    <h3><span class="code">nav</span></h3>
+                    <p>Sección de navegación con enlaces a otras partes del sitio.</p>
+                </article>
+            </div>
+        </section>
+
+    </main>
+
+    <footer id="pie" class="site-footer">
+        <p>Este ejemplo muestra etiquetas estructurales, semánticas y funcionales de HTML.</p>
+    </footer>
+
+    <script src="./script.js"></script>
+</body>
+</html>
+
+<!--
+Comentario en HTML
+
+HTML -> Hyper Text Markup Lenguage
+lenguaje basado en etiquetas
+de apertura y cierre: <etiqueta></etiqueta>
+de cierre en si mismas: <etiqueta/>
+
+semanticas - funcionales(<a></a> ) - estructurales("cajas" que nos dan estructura al sitio y nos permiten contener otras etiquetas)
+
+listas -> desorganizadas (ul)| organizadas (ol) -> dentro de ellas (hijos directos ) items de lista (li)
+
+estructurales :
+div - span - header - nav -main -section -footer - article -aside 
+-->

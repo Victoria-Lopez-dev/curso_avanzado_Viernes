@@ -1,0 +1,228 @@
+@import url('https://fonts.googleapis.com/css2?family=M+PLUS+Code+Latin:wght@100..700&display=swap');
+
+
+:root {
+    --fondo: #f5f7ff;
+    --primario: #9e2f5f;
+    --secundario: #5f7cff;
+    --texto: #222222;
+    --texto-muted: #555555;
+    --blanco: #ffffff;
+    --gris: #d8dcec;
+    --radio: 16px;
+    --sombra: 0 12px 30px rgba(45, 54, 112, 0.12);
+    --font-code:"M PLUS Code Latin", monospace;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: Inter, system-ui, sans-serif;
+    color: var(--texto);
+    background: var(--fondo);
+    line-height: 1.6;
+}
+h1{
+   color: var(--fondo);
+}
+
+h2, h3 {
+    margin: 0 0 0.8rem;
+    color: var(--primario);
+}
+.code{
+    font-family: var(--font-code);
+}
+p, li, label {
+    color: var(--texto-muted);
+}
+
+.site-header {
+    background: linear-gradient(135deg, var(--primario), var(--secundario));
+    color: var(--blanco);
+    padding: 1.8rem 1rem;
+}
+
+header .brand {
+    max-width: 900px;
+    margin: 0 auto 1rem;
+}
+
+.subtitle {
+    margin-top: 0.4rem;
+    font-size: 1rem;
+}
+
+.main-nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.main-nav a {
+    color: var(--blanco);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.main-nav a:hover,
+.main-nav a:focus {
+    color: var(--primario);
+    background-color: var(--blanco);
+}
+
+#contenido-principal {
+    max-width: 1040px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.bloque {
+    background: var(--blanco);
+    border: 1px solid var(--gris);
+    border-radius: var(--radio);
+    padding: 1.6rem;
+    margin-bottom: 1.5rem;
+    box-shadow: var(--sombra);
+}
+
+section.bloque h2 {
+    border-bottom: 2px solid var(--gris);
+    padding-bottom: 0.5rem;
+}
+
+.card {
+    border-left: 5px solid var(--primario);
+    padding: 1rem;
+    margin: 0 0 1rem;
+    background: #f9faff;
+}
+
+.aside-info {
+    border: 1px dashed var(--secundario);
+    padding: 1rem;
+    background: #eef2ff;
+}
+
+.example-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1rem;
+}
+
+.example-grid article {
+    background: #ffffff;
+    border: 1px solid var(--gris);
+    border-radius: 12px;
+    padding: 1rem;
+}
+
+.controls {
+    display: grid;
+    gap: 0.75rem;
+    margin: 1rem 0;
+}
+
+.controls label {
+    font-weight: 600;
+}
+
+.controls input {
+    padding: 0.9rem 1rem;
+    border: 1px solid var(--gris);
+    border-radius: 10px;
+    width: 100%;
+}
+
+.controls button {
+    width: fit-content;
+    padding: 0.9rem 1.4rem;
+    border: none;
+    border-radius: 999px;
+    background: var(--primario);
+    color: var(--blanco);
+    cursor: pointer;
+}
+
+.controls button:hover,
+.controls button:focus {
+    background: var(--secundario);
+}
+
+.demo-figure {
+    margin: 1.5rem 0;
+    border: 1px solid var(--gris);
+    border-radius: 14px;
+    overflow: hidden;
+}
+
+.demo-figure img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.demo-figure figcaption {
+    padding: 1rem;
+    background: #f7f9ff;
+    color: var(--texto-muted);
+}
+
+progress {
+    width: 100%;
+    height: 1.2rem;
+    accent-color: var(--primario);
+    border-radius: 999px;
+    overflow: hidden;
+}
+
+#pie {
+    text-align: center;
+    padding: 1.5rem 1rem 2rem;
+    color: var(--texto-muted);
+}
+
+footer address {
+    font-style: normal;
+    margin-top: 0.5rem;
+}
+
+footer a {
+    color: var(--primario);
+    text-decoration: none;
+}
+
+footer a:hover,
+footer a:focus {
+    text-decoration: underline;
+}
+
+
+
+/*
+sintaxis:
+
+selector{
+    propiedad:valor;
+    propiedad:valor;
+    propiedad:valor;
+    propiedad:valor;
+}
+selector -> forma de hacer referencia a una o varias etiqeutas del HTML
+
+.nombre -> clase
+#nombre -> id
+nombre -> etiqueta
+
+padre>hijo | + ~
+*/

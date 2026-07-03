@@ -1,0 +1,21 @@
+ *{
+    box-sizing: border-box;
+}
+video {
+    width: 500px;
+    display: block;
+
+}
+.video2{
+    padding: 10px;
+    background-color: darkcyan;
+    width: fit-content;
+}
+.barra-reprodiccion{
+    padding: 10px;
+    background-color: darkslategrey;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+}

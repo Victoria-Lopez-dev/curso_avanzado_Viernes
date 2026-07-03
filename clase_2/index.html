@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">    
+<link rel="stylesheet" href="./style.css">
+<title>Clase -2</title>
+</head>
+<body onload="mostrarTiempo()">
+    <h1>Audio y Video </h1>
+
+    <audio controls  src="./assets/aves.mp3"></audio>
+
+    <video controls loop poster="./assets/bosque.jpg" >
+        <source src="./assets/videos/video2.mp4" type="video/mp4"/>
+        <source src="./assets/videos/video2.ogv" type="video/ogv" >
+    </video>
+
+    <h2>Barra de reproduccion personalizada</h2>
+
+    <div class="video2">
+        <video id="videoB" poster="./assets/bosque.jpg" >
+            <source src="./assets/videos/video2.mp4" type="video/mp4"/>
+            <source src="./assets/videos/video2.ogv" type="video/ogv" >
+        </video>
+        <div class="barra-reprodiccion">
+            <div>
+                <button id="play">PLAY</button>
+                <button id="pausa">PAUSE</button>                
+            </div>
+            <div>
+                <p>
+                    <span id="actual">00:00</span>
+                    / <span class="tiempo">00:00</span>
+                </p>     
+                
+            </div>
+
+
+        </div>
+    </div>
+
+
+    <script src="./video-audio.js"></script>
+</body>
+</html>
+<!--
+audio y video 
+atributos:
+    controls -> barra de reproduccion predeterminada por cada browser/navegador
+    poster -> imagen de fondo antes de su reproduccion
+    loop -> bucle infinito de reproduccion
+    autoplay -> reproduccion automatica (no agregar poster)
+  
+
+    
+-->
