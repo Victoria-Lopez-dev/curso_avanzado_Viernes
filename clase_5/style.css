@@ -1,0 +1,69 @@
+body{
+    margin:0
+}
+svg{
+    border: 2px solid black;
+    width: 500px;
+    height: 400px;
+    display: block;
+}
+
+#rectNaranja{
+    animation: mover 3s infinite alternate;
+}
+#circRosa{
+   transition: r 2s; 
+}
+#circRosa:hover{
+    r:40;
+    
+}
+.ciruclo,#poligono{
+    animation: crecerC 3s 2 alternate;
+}
+#poligono{
+    animation: crecerP 3s 2 alternate;
+}
+@keyframes crecerC {
+    to{
+        r: 45;
+        
+    }
+}
+@keyframes crecerP {
+    to{
+        transform: scale(1.1) translate(-50px);
+    }
+}
+@keyframes mover {
+    from{
+        transform: translateY(-200px);
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+        fill:green
+    }
+}
+
+/*----------------------------------------------*/
+
+nav{
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: transparent;
+    position: sticky;
+    top: 0;
+    transition: all 2s;
+}
+ul{
+    display: flex;
+    gap: 10px;
+    list-style: none;
+}
+.cambioNav{
+    background-color: darkgoldenrod;
+    border-bottom: 2px solid red;
+    
+}

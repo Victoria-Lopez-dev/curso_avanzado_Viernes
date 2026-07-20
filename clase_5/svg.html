@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>Clase - 5</title>
+</head>
+<body onscroll="mostrar()">
+    <nav>
+        <p>ICONO</p>
+
+        <ul>
+            <li>Item</li>
+            <li>Item</li>
+        </ul>
+    </nav>
+    <h1>Usando SVG</h1> 
+    <!-- <img src="./images/undraw_focused-dev_gqoa.svg" alt="">         -->
+    <svg><!-- 500x400-->
+        <rect x="290" y="150" width="100" height="100" fill="none" stroke="red" stroke-width="4" rx="10"></rect>
+
+        <rect id="rectNaranja" x="300" y="100" width="150" height="100" fill="#f90" stroke="blue" stroke-width="4" ></rect>
+
+        <circle id="circRosa" cx="100" cy="200" r="80" fill="pink" ></circle>
+        <!-- <ellipse cx="200" cy="133" rx="100" ry="40" stroke="rgb(100,44,55)" fill="none" stroke-width="3" ></ellipse> -->
+
+         <ellipse cx="200" cy="133" rx="100" ry="40" fill="white" ></ellipse>
+
+        <line x1="200" y1="300" x2="490" y2="40" stroke="black" stroke-width="2"></line>
+      
+        <polyline points="10 10,100 33,100 100,50 100,50 200, 100 290" fill="none" stroke="green" stroke-width="4"></polyline>
+
+        <!-- <polygon points="30 10,120 33,120 100,70 100,70 200, 120 290" fill="lightsalmon" stroke="red" stroke-width="4"></polygon> -->
+
+        <polygon points="400 350, 350 280,300 350" stroke="orange" stroke-width="4"></polygon>
+    </svg>
+    <svg>
+        <circle class="ciruclo" cy="160" cx="200" r="40" fill="brown"></circle>
+        <circle class="ciruclo" cy="160" cx="260" r="40" fill="brown"></circle>
+        <polygon id="poligono" points="165 180, 295 180,230 250" fill="brown"></polygon>
+    </svg>
+    <canvas></canvas>
+ <script src="./script.js"></script>
+</body>
+</html>
+<!-- svg 
+
+    formas primitivas - formas geometricas
+    rect - circle-ellipse-line-polyline-polygon
+
+    atributos:
+    x ->eje horizontal
+    y -> eje vertical
+    fill-> color de relleno
+    stroke-> color de contorno
+    stroke-width -> ancho del contorno
+    cx -> punto eje x del centro de la circunferencia
+    cy -> punto eje y del centro de la circunferencia
+    r -> radio de la circuferencia
+    rx -> radio eje x de la elipse 
+    ry ->radio eje y de la elipse 
+    x1,y1-> punto 
+    x2,y2 -> punto
+    points -> conjunto de pares x y separados con una coma que representan puntos continuos
+-->
