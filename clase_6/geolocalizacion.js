@@ -1,32 +1,38 @@
-//API obtener la ubicacion del dispositivo 
+//API -> Aplication Programing Interfase 
 
-//navigator.geolocation
-//getCurrentPosition()
-//watchPosition() -
+//APIs incorporadas -> canvas , geolocation, drag and drop, webstorage
 
-const fnOk=(position)=>{
-    console.log("se logro la ubicacion")
-    console.log(position);
-    let parrafo=document.querySelector("p")
-    parrafo.textContent=`coordenadas de la ubicacion :${position.coords.latitude} , ${position.coords.longitude} con un margen de error de ${position.coords.accuracy.toFixed(0)} metros `
+//Geolocation -> APi que nos permite detectar la ubicacion del dispositivo 
+
+//metodos getCurrentPosition (solicita 1 vez)- watchPosition ( lo pide cada cierto tiempo)
+ let parrafo=document.querySelector("p");
+
+const funcionOk =(position)=>{
+    console.log(position)
+    
+    parrafo.innerText=` el dispositivo se encuentra en las coordenadas ${position.coords.latitude} ${position.coords.longitude}. Con un margen de error de ${position.coords.accuracy} metros `
 };
 
-const fnError=(error)=>{
- console.log("NO se logro conseguir la ubicacion")
+const funcionErr=(error)=>{
+    console.log("hubo un error")
     console.log(error)
-    let parrafo=document.querySelector("p")
-    
-    if(error.code ==1) parrafo.textContent="Nos es necesario que acepte el poder conseguir su ubicacion para poder continuar..."
-    if(error.code ==3)parrafo.textContent='Ups!no tuvimos tiempo suficiente '
+   if(error.code ==1){
+        parrafo.innerText='Nos es necasario saber su ubicacion ,le pedimos que nos de acceso,vuelva a la consola para habilitar o acepte el prompt enviado'
+   }
 
-    if(error.code ==2)parrafo.textContent='Ups!no pudimos encontrarte '
-}
-const objetoConfig={
-    //enableHighAccuracy-> booleano 
-    enableHighAccuracy:true,
-    //timeout -> ms tiempo limite de busqueda
-    timeout:'20ms',
-    //maximumAge -> ms - tiempo en el que tiene que volver a ejecutar el pedido 
-}
+   if(error.code ==3) parrafo.innerText='Error de config.No tubimos tiempo suficiente para encontrarte'
+};
 
-navigator.geolocation.getCurrentPosition(fnOk,fnError,objetoConfig)
+const objectoOpcional={
+    enableHightAccuracy:true,
+    timeout:'10ms',
+    // maximumAge:1000
+};
+navigator.geolocation.getCurrentPosition(funcionOk,funcionErr,objectoOpcional);//solicita permiso , si le dan el ok ejecuta la busqueda y como respuesta ejecuta la funcion que paso como parametro( funcion ok o funcion error)
+
+
+
+// objeto de error : code : 
+// 1(denegaron el permiso)-
+// 2- 
+// 3- 

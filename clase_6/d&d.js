@@ -1,83 +1,103 @@
-//API arrastre de elementos 
+let cohete=document.querySelector("img")
+let h1=document.querySelector("#tituloUnico")
+//Drag and Drop -> API que nos permite identificar momentos en que elementos se estan trasladando
+
+
+// atributo draggable -> true (elemento tiene la capacidad de ser arrastrado)
+//por defecto las imagenes como las anclas son arrastrables 
+
 //7 eventos : 
-// drag-dragstart-dragend -> elemento a arrastrar
-// drop-dragover-dragleaver-dragenter -> elemento 'destino'
+// dragstart- dragend- drag (el elemento arrastrado) 
+// -dragover - drop - dragleave- dragenter(el destino del elemento arrastrado)
 
-// dos elementos por defecto arrastrables -> <img>| <a>
+// objeto dataTransfer -> almacenar y detectar informacion  -> se encuentra dentro del event y contiene 3 funciones(metodos)
+//setData(tipo,dato) -getData(tipo) - clearData(tipo)
+//dato -> siempre string - caracter alfanumerico
+//tipo -> Text - URL - html/plain-text - html/uri-text
 
-//draggable -> booleano 
-//dataTransfer ->objeto que aporta la API
-//almacena strings -> 3 metodos:
-//setData(tipo,info) -getData(tipo) -clearData(tipo)
-//'Text','URL','html/plain-text','html/uri'
-
-//files
+//propiedad -> files
 
 
-let titulo=document.querySelector("#tituloUnico");
 
-titulo.addEventListener("dragstart",(event)=>{
-    console.log("inicio de arrastre **")
-    console.dir(titulo)
-    //event.dataTransfer.setData('Text',titulo.textContent)
-     event.dataTransfer.setData('Text',titulo.id)
+
+h1.addEventListener('dragstart',(event)=>{
+    console.dir(h1.id)
+    //almacenar info
+    // event.dataTransfer.setData("Text",h1.id)
+    event.dataTransfer.setData("Text",h1.innerText)
+
 })
 
-// titulo.addEventListener("dragend",()=>{
-//     console.log("se solto el elemento ")
 
-// })
-// titulo.addEventListener("drag",()=>{
-//     console.log("estamos arrastrando el elemento")
-// })
+//sintaxis:
 
-//eventos en elemento 'destino'
+//A) addEventListener()
+cohete.addEventListener("dragstart",()=>{
+    console.log("inicio de arrastre")
+})
+cohete.addEventListener("dragend",()=>{
+    console.log("FIN de arrastre")
+})
 
-// drop-> suelto algo dentro de mi elemento destino
-// dragover->  algo que se arrastra dentro de este elementos, continua dentro(paralelo al drag)
-// -dragleaver-> se ejecuta cuando salgo de este elemento con otro que estamos arrastrando
-// dragenter -> cuando algo arrastrado se posa sobre el elemento
+cohete.addEventListener("drag",()=>{
+    console.log("arrastre...")
+})
 
-const funcionDragenter=()=>{
-    console.log("algo esta sobre zona destino")
+//B) evento como atributo en el HTML + funcion JS
+
+const fnEntrada=()=>{
+    //console.log("un elemento arrastrado ingreso")
+}
+const fnSlaida=()=>{
+    //console.log("salio un elemento arrastrado ")
+
 }
 
-const funcionDragLeave=()=>{console.log('evento dragleave')}
+const fnElemSoltado=(event)=>{
+    
+    let info=event.dataTransfer.getData("Text");
+   /* console.log("informacion obtenida: "+ info)
+    let titulo=document.querySelector(`#${info}`);
+    console.log(titulo)*/
+    let zonaDestino=document.querySelector(".zona-destino");    
+    
+    if(info =='Drag and Drop'){
+        console.log(info)
 
-const dragOverFn=(e)=>{
-    e.preventDefault();//cancelar su accion por defecto
-   // console.log("dragover")
 
-}
-
-const dropFn=(e)=>{
-    console.log("DROP!!!!")
-    console.log(e.dataTransfer.files)
-    let file=e.dataTransfer.files
-
-    let contenedor=document.querySelector(".zona-destino");
-    //opcion 1
-    // let nuevoTitulo=document.createElement("h1");
-    //nuevoTitulo.textContent=e.dataTransfer.getData("Text")
-    //contenedor.appendChild(nuevoTitulo)
-    //titulo.style.display='none'
-
-    //opcion 2
-    if(file.length == 0){
-        let idTitulo=e.dataTransfer.getData("Text");
-        let nuevoTitulo=document.getElementById(idTitulo)
-        contenedor.appendChild(nuevoTitulo);
-        contenedor.innerHTML=nuevoTitulo.outerHTML 
-    }else{
-       console.log( file[0])
-       if(file[0].type == 'application/pdf'){
-        contenedor.innerHTML=`<img src='./imagenes/img-pdf.png'/>
-        <p>${file[0].name}</p>
-        ` 
-       }
+        zonaDestino.innerHTML=`<h1 id="tituloUnico">${info}</h1>`
+        h1.style.visibility="hidden"        
     }
+    if(event.dataTransfer.files.length >0){
+        let docInfo=event.dataTransfer.files[0]// objeto
+        //split()-> transformar un string a array 
+        console.log(event.dataTransfer.files[0].type)
+        let tipoDoc=docInfo.type.split("/").pop()
+        if(tipoDoc =="pdf"){
+            zonaDestino.innerHTML=`
+            <img src="./imagenes/img-pdf.png" />
+            <p>${docInfo.name}</p>`
+        }else{
+            zonaDestino.innerHTML=`${docInfo.name}`
+        }
+
+        
+    }
+    //zonaDestino.appendChild(titulo)
+
+}
+const fnContEleDestino=(e)=>{
+    e.preventDefault()// no bloqueo la deteccion del evento drop
+    //console.log('dragover ejecutando')
 }
 
-//cancelar una accion por defecto -> preventDefault() -> eventos
+////--------------------
+const preventRedirect=(event)=>{
+    event.preventDefault()
+}
 
-// dragstart - dragover - drop
+// para un traslado comun -> dragstart - drop - dragover(preventDefault)
+
+const reincio=()=>{
+    window.location.reload()// refresh 
+}

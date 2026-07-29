@@ -3,5 +3,15 @@
  - API Geolocalizacion 
  - API Drag and Drop
 
+
  ## proxima clase 
  - Web Storage - mini ejercicio - ideas para incorporar al proyecto final 
+
+
+## en taller del Sabado
+- dudas y consultas sobre proyecto : dudas ,errores,consultas
+- creacion de branches en git(adicional)
+- status code
+
+
+

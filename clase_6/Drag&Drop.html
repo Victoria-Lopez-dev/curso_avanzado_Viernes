@@ -9,15 +9,16 @@
 <body>
     <h1 id="tituloUnico" draggable="true">Drag and Drop</h1>
     <h2 >Otro titulo</h2>
-    <a href="#" >Ancla a algun lado...</a>
-    <!-- <div class="zona-destino" ondragenter="funcionDragenter()" ondragleave="funcionDragLeave()" ondragover="dragOverFn(event)" ondrop="dropFn()">
-        arrastar elemento aqui..
-    </div> -->
-        <div class="zona-destino" ondragover="dragOverFn(event)" ondrop="dropFn(event)">
+    <a href="https://www.google.com" target="_blank" onclick="preventRedirect(event)">Ancla a algun lado...</a>
+    <div class="zona-destino" 
+    ondragenter="fnEntrada()" 
+    ondragleave="fnSlaida()" 
+    ondragover="fnContEleDestino(event)" 
+    ondrop="fnElemSoltado(event)">
         arrastar elemento aqui..
     </div>
-    <button >Enviar..</button>
-    <img draggable="false" id="cohete" src="./imagenes/cohete.jpg" alt="cohete">
+    <button draggable="true" onclick="reincio()">Reiniciar..</button>
+    <img  id="cohete"  src="./imagenes/cohete.jpg" alt="cohete">
     <script src="./d&d.js"></script>
 </body>
 </html>
