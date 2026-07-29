@@ -1,0 +1,22 @@
+*{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.zona-destino{
+    width: 80%;
+    height: 200px;
+    background-color: rgb(247, 214, 214);
+    padding: 10px;
+    border: 2px solid brown;
+}
+button{
+    background-color: brown;
+    color: beige;
+    padding: 10px;
+    border-radius: 5px;
+
+}
+#tituloUnico{
+    color: #f90;
+    text-decoration: overline;
+}
