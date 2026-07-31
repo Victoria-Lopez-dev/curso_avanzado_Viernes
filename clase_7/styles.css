@@ -1,0 +1,264 @@
+:root {
+  --bg: #f4f4f2;
+  --surface: #ffffff;
+  --surface-soft: #f7f7f6;
+  --text: #212121;
+  --text-muted: #6e6b67;
+  --accent: #4f5754;
+  --accent-soft: #8b948f;
+  --border: rgba(33, 33, 33, 0.08);
+  --shadow: 0 24px 80px rgba(23, 22, 21, 0.08);
+  --radius: 28px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  padding: 10px;
+  margin: 0;
+  min-height: 100vh;
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  color: var(--text);
+  background: radial-gradient(circle at top left, #ffffff 0%, #f4f4f2 32%, #e8e8e6 100%);
+}
+
+.night{
+  background:#3b3a3a;;
+  color: #ffffff;
+}
+.night>div>main>section>.product-card--light{
+  background-color: var(--accent-soft);
+}
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.page-shell {
+  width: min(1260px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 32px 0 48px;
+}
+
+.site-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 32px;
+  padding: 10px 0 36px;
+}
+
+.brand {
+  font-size: 0.95rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.main-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  letter-spacing: 0.12em;
+}
+
+.nav-link {
+  color: var(--text-muted);
+}
+
+.nav-link.active,
+.nav-link:hover {
+  color: var(--text);
+}
+
+.header-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.icon-button {
+  position: relative;
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.8);
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  color: var(--text);
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+.icon-button-theme{
+  width:fit-content;
+  padding: 10;
+  height: auto;
+  border-radius: 30px;
+}
+#count{
+  position: absolute;
+  top: 12px;
+  right: 2px;
+  color:white;
+  background-color: var(--accent-soft);
+  padding: 4px 6px;
+  border-radius: 50%;
+}
+
+h1,
+h2,button,
+h3,
+footer h4 {
+  margin: 0;
+  font-family: "Cormorant Garamond", Georgia, serif;
+}
+
+h1 {
+  font-size: clamp(3rem, 4.5vw, 5.2rem);
+  line-height: 0.95;
+  letter-spacing: -0.06em;
+}
+
+.hero-button {
+  display: block;
+  height: 45px;
+  background: var(--accent);
+  color: white;
+  border-radius: 30px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  font-size: 18px;
+  border:none;
+  cursor: pointer;
+}
+.hero-button:hover{
+  background-color:var(  --accent-soft) ;
+}
+
+
+.collection-intro {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+.collection-intro h2 {
+  font-size: clamp(2rem, 2.4vw, 3rem);
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(fit-content, minmax(0, 1fr));
+  gap: 24px;
+  margin-bottom: 64px;
+}
+
+.product-card {
+  display: grid;
+  gap: 24px;
+  padding: 28px;
+  border-radius: 32px;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+
+.product-card--dark {
+  background: #1f2020;
+  color: white;
+}
+
+.product-card--light {
+  background: #f4f4f2;
+}
+
+.product-visual {
+  min-height: 320px;
+  border-radius: 24px;
+  display: grid;
+  place-items: center;
+  color: inherit;
+  font-size: 1.1rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  overflow: hidden;
+  margin: auto;
+}
+.product-visual>img{
+  height: 100%;
+}
+.visual-signature {
+  background: linear-gradient(180deg, #222221 0%, #1c1c1c 100%);
+}
+
+.visual-nordic {
+  background: #2f6f70;
+}
+
+.visual-nordic::after {
+  content: "";
+  width: 85%;
+  height: 60%;
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 16px;
+}
+
+.visual-nocturne {
+  background: linear-gradient(180deg, #1d1d1d 0%, #0b0b0b 100%);
+}
+
+.product-info h3 {
+  font-size: 1.15rem;
+  margin-bottom: 10px;
+}
+
+.product-info p {
+  margin: 0;
+  color: inherit;
+  opacity: 0.8;
+}
+
+.product-price {
+  font-weight: 700;
+  font-size: 1.05rem;
+}
+
+.site-footer {
+  margin-top: 16px;
+}
+
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.social-links {
+  display: flex;
+  gap: 16px;
+}
+
+.social-links a {
+  color: var(--text-muted);
+  font-size: 1.1rem;
+}
+
+

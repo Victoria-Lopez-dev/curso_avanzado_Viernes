@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Web Storage</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body onload="inicio()">
+  <div class="page-shell">
+    <header class="site-header">
+      <h1 class="brand">ATELIER SOBRIO</h1>
+
+      <nav class="main-nav" aria-label="Primary navigation">
+        <a href="#collections" class="nav-link active">COLLECTIONS</a>
+        <a href="./hoja2.html" class="nav-link">LISTA PREVIA COMPRA</a>
+      </nav>
+      
+      <div class="header-actions">
+        <button class="icon-button" aria-label="Cart">
+          <img src="./images/canasto.png" alt="">
+          <p id="count">0</p>
+        </button>
+        <button id="botonTheme" onclick="theme(this)" class="icon-button icon-button-theme" aria-label="Account">DAY</button>
+      </div>
+    </header>
+
+    <main>
+
+      <section class="collection-intro">
+        <h2>The Living Collection</h2>
+
+      </section>
+
+      <section class="product-grid">
+        <article class="product-card product-card--dark">
+          <div class="product-visual visual-signature">
+            <img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1200&q=80" alt="">
+          </div>
+          <div class="product-info">
+            <h3>Cama</h3>
+            <p>Hand-finished Ash Wood</p>
+          </div>
+          <div class="product-price">$3,800</div>
+          <button id="cama" class="hero-button " onclick="cargarProd(this)">Buy Now</button>
+        </article>
+
+        <article class="product-card product-card--light">
+          <img src="./images/Silla Living Nordic.jpg" class="product-visual visual-nordic"/>
+          <div class="product-info">
+            <h3>Sillon Living Nordic</h3>
+            <p>Vegetable Tanned Leather</p>
+          </div>
+          <div class="product-price">$2,800</div>
+          <button id="sillon" class="hero-button" onclick="cargarProd(this)">Buy Now</button>
+        </article>
+
+        <article class="product-card product-card--dark">
+          <div class="product-visual visual-nocturne">
+            <img src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=1200&q=80" alt="">
+          </div>
+          <div class="product-info">
+            <h3>Silla Living Nocturne</h3>
+            <p>Midnight Velvet</p>
+          </div>
+          <div class="product-price">$3,100</div>
+          <button id="silla" class="hero-button "onclick="cargarProd(this)">Buy Now</button>
+        </article>
+      </section>
+
+
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-bottom">
+        <p>WEB STORAGE - LOCALSTORAGE-SESSIONSTORAGE & JSON</p>
+      </div>
+    </footer>
+  </div>
+  <script src="./script.js"></script>
+</body>
+</html>
